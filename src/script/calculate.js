@@ -1,16 +1,25 @@
 const select = document.querySelector('#numberBoosts')
 const button = document.querySelector('#submit')
 
-document.querySelector('#boostLevelValueAfter').focus()
-
 button.addEventListener('click', (event) => {
   event.preventDefault()
   console.clear()
 
   const optionValue = Number(select.options[select.selectedIndex].value)
-  const boostLevelValueBefore = document.querySelector('#boostLevelValueBefore').value
 
-  stones(multiplier(optionValue))
+  const resultValue = document.querySelector('#resultValue')
+  const resultStones = document.querySelector('.resultStones')
+  const resultPrice = document.querySelector('.resultPrice')
+
+  const showResult = () => {
+    resultStones.style.display = "block"
+    resultPrice.style.display = "block"
+
+    resultStones.innerHTML = `Quantidade de stones: <br/> ${stones(multiplier(optionValue))}`
+    resultPrice.innerHTML = `Preço total: <br/> ${stones(multiplier(optionValue)) * Number(resultValue.value)}`
+  }
+
+  showResult()
 })
 
 
@@ -30,23 +39,21 @@ function multiplier(multiplo) {
 
 function stones(array) {
   let boostLevelValueAfter = document.querySelector('#boostLevelValueAfter').value
-  let optionValue = Number(select.options[select.selectedIndex].value)
 
   let stonesQuantity = 0
   let sommer = 1
-  let stonesSommer = stonesQuantity + sommer
-
-  let arrayTest = [1, 2, 3, 4]
-  let number1 = 4
-  let multiplicador = 1
+  let stonesValues = []
+  
   for(i = 0; i < boostLevelValueAfter; i++) {
-    stonesQuantity++
-    console.log(stonesQuantity)
+
+    stonesQuantity = stonesQuantity + sommer
+    stonesValues.push(stonesQuantity)
     array.forEach(element => {
-      if(element == stonesQuantity) {
-        console.log(`Algum múltimo de ${optionValue} foi encontrado`)
+      if(element == i+1) {
+        sommer = sommer + 1
+        return stonesQuantity
       }
     });
   }
-
+  return stonesValues.pop()
 }

@@ -50,7 +50,7 @@ form {
   align-items: center;
   padding: 50px;
   background: #c2653c;
-  height: 50vh;
+  min-height: 50vh;
   border-radius: 50px;
   width: 400px;
   max-width: 400px;
@@ -75,6 +75,17 @@ form input, select {
   color: black;
 }
 
+select {
+  width: auto;
+}
+
+.options {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .options label {
   width: 100%;
 }
@@ -83,6 +94,31 @@ select {
   text-align: center;
 }
 
+.price-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.priceInput {
+  height: 37px;
+  width: 100px;
+  float: right;
+}
+
 .result {
-  background: red;
+  margin-top: 16px;
+  color: white;
+  font-weight: 600;
+}
+
+.resultStones, .resultPrice {
+  text-align: center;
+}
+
+.result-container {
+  text-align: center;
+  margin-top: 16px;
 }
