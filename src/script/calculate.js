@@ -10,7 +10,7 @@ button.addEventListener('click', (event) => {
   const optionValue = Number(select.options[select.selectedIndex].value)
   const boostLevelValueBefore = document.querySelector('#boostLevelValueBefore').value
 
-  stones(boostLevelValueBefore, multiplier(optionValue))
+  stones(multiplier(optionValue))
 })
 
 
@@ -25,7 +25,6 @@ function multiplier(multiplo) {
   }
   
   arrayMultiplier = arrayMultiplier.filter(item => item <= boostLevelValueAfter && item > boostLevelValueBefore)
-  console.log(arrayMultiplier)
   return arrayMultiplier
 }
 
@@ -34,10 +33,20 @@ function stones(array) {
   let optionValue = Number(select.options[select.selectedIndex].value)
 
   let stonesQuantity = 0
-  let sommer = 0
+  let sommer = 1
+  let stonesSommer = stonesQuantity + sommer
 
+  let arrayTest = [1, 2, 3, 4]
+  let number1 = 4
+  let multiplicador = 1
   for(i = 0; i < boostLevelValueAfter; i++) {
     stonesQuantity++
     console.log(stonesQuantity)
+    array.forEach(element => {
+      if(element == stonesQuantity) {
+        console.log(`Algum múltimo de ${optionValue} foi encontrado`)
+      }
+    });
   }
+
 }
