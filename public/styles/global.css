@@ -121,6 +121,13 @@ select {
   text-align: center;
 }
 
+.bug-container {
+  display: none;
+  text-align: center;
+  margin-top: 16px;
+}
+
 .bug {
-  color: white;
+  color: black;
+  font-weight: 500;
 }

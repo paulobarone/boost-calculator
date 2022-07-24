@@ -5,17 +5,28 @@ button.addEventListener('click', (event) => {
   event.preventDefault()
   console.clear()
 
+  let boostLevelValueAfter = document.querySelector('#boostLevelValueAfter').value
+  let boostLevelValueBefore = document.querySelector('#boostLevelValueBefore').value
+
   const optionValue = Number(select.options[select.selectedIndex].value)
 
   const resultContainer = document.querySelector('.result-container')
   const resultStones = document.querySelector('.resultStones')
   const resultPrice = document.querySelector('.resultPrice')
+  const bug = document.querySelector('.bug')
 
   const showResult = () => {
-    resultContainer.style.display = "block"
-
-    resultStones.innerHTML = stones(multiplier(optionValue))
-    resultPrice.innerHTML = `$ ${stones(multiplier(optionValue)) * Number(resultValue.value)}`
+    if(boostLevelValueBefore < boostLevelValueAfter) {
+      resultContainer.style.display = "block"
+      bug.parentElement.style.display = 'none'
+  
+      resultStones.innerHTML = stones(multiplier(optionValue))
+      resultPrice.innerHTML = `$ ${stones(multiplier(optionValue)) * Number(resultValue.value)}`
+    } else {
+      resultContainer.style.display = "none"
+      bug.parentElement.style.display = 'block'
+      bug.innerHTML = 'O nível atual precisa ser menor do que o nível desejado.'
+    }
   }
 
   showResult()
