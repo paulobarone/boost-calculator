@@ -61,8 +61,7 @@ function stones(array) {
   }
 
   
-  console.log(stonesValues)
-  return stonesValues
+  return stonesValues.pop()
 }
 
 // aplicar um slice nso elementos indesejados e colocar o sontesquantity como valor 0, aí o sommer vai se mander e a quantidade de pedras vai prevalecer
