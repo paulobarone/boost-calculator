@@ -6,8 +6,7 @@ Você pode conferir a calculadora <a href="https://paulobarone.github.io/boost-c
 
 ## Observações:
 <ul>
-  <li>Esse é meu primeiro projeto com JavaScript;</li>
-  <li>A calculadora ainda não está 100% pronta;</li>
+  <li>Esse é meu primeiro projeto com JavaScript;</li
   <li>A lógica do cálculo é de que a quantidade de pedras sempre aumenta em 1 conforme o nível, mas quando o nível excede um múltiplo (o tipo de boost), a quantidade de pedras aumenta em 2, e o mesmo acontece se exceder os próximos múltiplos;</li>
   <li>O projeto não foi feito com auxílio de instrutores;</li>
 </ul>
