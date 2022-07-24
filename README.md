@@ -1,7 +1,7 @@
 # Calculadora de Boost (PXG)
 
-Este projeto foi iniciado para facilitação de um pequeno trabalho de cálculo sobre Boosts em um jogo de pokémon chamado PokeXGame.
-O boost é um meio para deixar seu pokémon mais poderoso no jogo, para aplicar o boost, é necessário diversas pedras, a calculadora descobre o número de pedras necessário para fazer o boost de sua escolha.
+Este projeto foi iniciado para facilitação de um pequeno trabalho de cálculo sobre Boosts em um jogo de pokémon chamado PokeXGame. <br/>
+O boost é um meio para deixar seu pokémon mais poderoso no jogo, para aplicar o boost, é necessário diversas pedras, a calculadora descobre o número de pedras necessário para fazer o boost de sua escolha. <br/>
 Você pode conferir a calculadora <a href="https://paulobarone.github.io/boost-calculator/src/pages/">neste</a> link, e a tabela geral dos boosts <a href="https://wiki.pokexgames.com/index.php/Tabela_de_Boost">aqui</a>.
 
 ## Observações:
