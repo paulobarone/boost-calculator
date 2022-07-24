@@ -7,24 +7,22 @@ button.addEventListener('click', (event) => {
 
   const optionValue = Number(select.options[select.selectedIndex].value)
 
+  const resultContainer = document.querySelector('.result-container')
   const resultStones = document.querySelector('.resultStones')
   const resultPrice = document.querySelector('.resultPrice')
 
   const showResult = () => {
-    resultStones.style.display = "block"
-    resultPrice.style.display = "block"
+    resultContainer.style.display = "block"
 
-    resultStones.innerHTML = `Quantidade de stones: <br/> ${stones(multiplier(optionValue))}`
-    resultPrice.innerHTML = `Preço total: <br/> ${stones(multiplier(optionValue)) * Number(resultValue.value)}`
+    resultStones.innerHTML = stones(multiplier(optionValue))
+    resultPrice.innerHTML = `$ ${stones(multiplier(optionValue)) * Number(resultValue.value)}`
   }
 
   showResult()
 })
 
-
 function multiplier(multiplo) {
   let boostLevelValueAfter = document.querySelector('#boostLevelValueAfter').value
-  let boostLevelValueBefore = document.querySelector('#boostLevelValueBefore').value
 
   let numbers = 0
   let arrayMultiplier = [numbers]
@@ -38,7 +36,7 @@ function multiplier(multiplo) {
 
 function stones(array) {
   let boostLevelValueAfter = document.querySelector('#boostLevelValueAfter').value
-  let boostLevelValueBefore = document.querySelector('#boostLevelValueBefore')
+  let boostLevelValueBefore = document.querySelector('#boostLevelValueBefore').value
 
   let stonesQuantity = 0
   let sommer = 1
@@ -55,13 +53,14 @@ function stones(array) {
     })
   }
 
-  if(boostLevelValueBefore > 0) {
-    stonesValues.splice(1, boostLevelValueBefore.value)
-    console.log(stonesValues)
+  if(boostLevelValueBefore > 0 ) {
+    let stonesValuesFinal = stonesValues.slice(Number(boostLevelValueBefore - 1), boostLevelValueAfter)
+    stonesValuesFinal = stonesValuesFinal.pop() - stonesValuesFinal[0]
+    return stonesValuesFinal
+  } if(boostLevelValueBefore >= boostLevelValueAfter) {
+    document.querySelector('.bug-container').style.display = 'block'
+    document.querySelector('.bug').innerHTML = 'O nível atual não pode ser maior que o nível futuro.'
   }
 
-  
   return stonesValues.pop()
 }
-
-// aplicar um slice nso elementos indesejados e colocar o sontesquantity como valor 0, aí o sommer vai se mander e a quantidade de pedras vai prevalecer

@@ -72,7 +72,6 @@ form input, select {
   outline: none;
   border: none;
   border-radius: 10px;
-  color: black;
 }
 
 select {
@@ -108,17 +107,20 @@ select {
   float: right;
 }
 
-.result {
+.result-container {
+  display: none;
   margin-top: 16px;
-  color: white;
-  font-weight: 600;
+  text-align: center;
+}
+
+.result {
+  display: block;
 }
 
 .resultStones, .resultPrice {
   text-align: center;
 }
 
-.result-container {
-  text-align: center;
-  margin-top: 16px;
+.bug {
+  color: white;
 }

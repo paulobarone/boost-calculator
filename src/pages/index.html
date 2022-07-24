@@ -29,8 +29,7 @@
     <div class="options">
       <label>Tipo do boost:</label>
       <select name="numberBoosts" id="numberBoosts">
-        <option value="" selected disabled class="numberBoosts-option">Selecione</option>
-        <option value="2" class="numberBoosts-option">2</option>
+        <option value="2" selected class="numberBoosts-option">2</option>
         <option value="3" class="numberBoosts-option">3</option>
         <option value="4" class="numberBoosts-option">4</option>
         <option value="5" class="numberBoosts-option">5</option>
@@ -54,8 +53,12 @@
     <button type="submit" id="submit">Enviar</button>
     
     <div class="result-container">
-      <span class="result resultStones">Quantidade de stones:<br/></span>
-      <span class="result resultPrice">Preço total:<br/></span>
+      <span class="result">Quantidade de stones: <span class="resultStones"></span></span>
+      <span class="result">Preço total: <span class="resultPrice"></span></span>
+    </div>
+
+    <div class="bug-container">
+      <span class="bug"></span>
     </div>
   </form>
 </body>
