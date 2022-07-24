@@ -7,7 +7,6 @@ button.addEventListener('click', (event) => {
 
   const optionValue = Number(select.options[select.selectedIndex].value)
 
-  const resultValue = document.querySelector('#resultValue')
   const resultStones = document.querySelector('.resultStones')
   const resultPrice = document.querySelector('.resultPrice')
 
@@ -16,7 +15,7 @@ button.addEventListener('click', (event) => {
     resultPrice.style.display = "block"
 
     resultStones.innerHTML = `Quantidade de stones: <br/> ${stones(multiplier(optionValue))}`
-    resultPrice.innerHTML = `Preço total: <br/> ${stones(multiplier(optionValue)) * Number(resultValue.value)}`
+    // resultPrice.innerHTML = `Preço total: <br/> ${stones(multiplier(optionValue)) * Number(resultValue.value)}`
   }
 
   showResult()
@@ -33,19 +32,19 @@ function multiplier(multiplo) {
     arrayMultiplier.push(numbers += multiplo)
   }
   
-  arrayMultiplier = arrayMultiplier.filter(item => item <= boostLevelValueAfter && item > boostLevelValueBefore)
+  arrayMultiplier = arrayMultiplier.filter(item => item <= boostLevelValueAfter)
   return arrayMultiplier
 }
 
 function stones(array) {
   let boostLevelValueAfter = document.querySelector('#boostLevelValueAfter').value
+  let boostLevelValueBefore = document.querySelector('#boostLevelValueBefore')
 
   let stonesQuantity = 0
   let sommer = 1
   let stonesValues = []
-  
-  for(i = 0; i < boostLevelValueAfter; i++) {
 
+  for(i = 0; i < boostLevelValueAfter; i++) {
     stonesQuantity = stonesQuantity + sommer
     stonesValues.push(stonesQuantity)
     array.forEach(element => {
@@ -53,7 +52,17 @@ function stones(array) {
         sommer = sommer + 1
         return stonesQuantity
       }
-    });
+    })
   }
-  return stonesValues.pop()
+
+  if(boostLevelValueBefore > 0) {
+    stonesValues.splice(1, boostLevelValueBefore.value)
+    console.log(stonesValues)
+  }
+
+  
+  console.log(stonesValues)
+  return stonesValues
 }
+
+// aplicar um slice nso elementos indesejados e colocar o sontesquantity como valor 0, aí o sommer vai se mander e a quantidade de pedras vai prevalecer
