@@ -15,7 +15,7 @@ button.addEventListener('click', (event) => {
     resultPrice.style.display = "block"
 
     resultStones.innerHTML = `Quantidade de stones: <br/> ${stones(multiplier(optionValue))}`
-    // resultPrice.innerHTML = `Preço total: <br/> ${stones(multiplier(optionValue)) * Number(resultValue.value)}`
+    resultPrice.innerHTML = `Preço total: <br/> ${stones(multiplier(optionValue)) * Number(resultValue.value)}`
   }
 
   showResult()
