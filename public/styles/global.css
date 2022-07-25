@@ -16,7 +16,17 @@ body {
   font-weight: 500;
   font-size: 18px;
   text-align: center;
-  margin-bottom: 32px;
+}
+
+.table-link {
+  margin-bottom: 16px;
+}
+
+.table-link-content {
+  text-decoration: none;
+  color: black;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 #submit {

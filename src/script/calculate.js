@@ -5,31 +5,34 @@ button.addEventListener('click', (event) => {
   event.preventDefault()
   console.clear()
 
-  let boostLevelValueAfter = document.querySelector('#boostLevelValueAfter').value
-  let boostLevelValueBefore = document.querySelector('#boostLevelValueBefore').value
-
   const optionValue = Number(select.options[select.selectedIndex].value)
+  const boostLevelValueAfter = Number(document.querySelector('#boostLevelValueAfter').value)
+  const boostLevelValueBefore = Number(document.querySelector('#boostLevelValueBefore').value)
 
   const resultContainer = document.querySelector('.result-container')
   const resultStones = document.querySelector('.resultStones')
   const resultPrice = document.querySelector('.resultPrice')
-  const bug = document.querySelector('.bug')
-
+  const bugContainer = document.querySelector('.bug-container')
+  
   const showResult = () => {
-    resultContainer.style.display = "block"
-    bug.parentElement.style.display = 'none'
-    console.log(boostLevelValueBefore)
-    console.log(boostLevelValueAfter)
-
-    resultStones.innerHTML = stones(multiplier(optionValue))
-    resultPrice.innerHTML = `$ ${stones(multiplier(optionValue)) * Number(resultValue.value)}`
+    if(boostLevelValueBefore < boostLevelValueAfter) {
+      resultContainer.style.display = "block"
+      bugContainer.style.display = 'none'
+    
+      resultStones.innerHTML = stones(multiplier(optionValue))
+      resultPrice.innerHTML = `$ ${stones(multiplier(optionValue)) * Number(resultValue.value)}`
+    } if(boostLevelValueBefore >= boostLevelValueAfter) {
+      resultContainer.style.display = 'none'
+      bugContainer.style.display = 'block'
+    }
   }
-
+  
   showResult()
 })
 
+
 function multiplier(multiplo) {
-  let boostLevelValueAfter = document.querySelector('#boostLevelValueAfter').value
+  let boostLevelValueAfter = Number(document.querySelector('#boostLevelValueAfter').value)
 
   let numbers = 0
   let arrayMultiplier = [numbers]
@@ -38,13 +41,12 @@ function multiplier(multiplo) {
   }
   
   arrayMultiplier = arrayMultiplier.filter(item => item <= boostLevelValueAfter)
-  console.log(arrayMultiplier)
   return arrayMultiplier
 }
 
 function stones(array) {
-  let boostLevelValueAfter = document.querySelector('#boostLevelValueAfter').value
-  let boostLevelValueBefore = document.querySelector('#boostLevelValueBefore').value
+  const boostLevelValueAfter = Number(document.querySelector('#boostLevelValueAfter').value)
+  const boostLevelValueBefore = Number(document.querySelector('#boostLevelValueBefore').value)
 
   let stonesQuantity = 0
   let sommer = 1
@@ -59,6 +61,12 @@ function stones(array) {
         return stonesQuantity
       }
     })
+  }
+
+  if(boostLevelValueBefore > 0 ) {
+    let stonesValuesFinal = stonesValues.slice(Number(boostLevelValueBefore - 1), boostLevelValueAfter)
+    stonesValuesFinal = stonesValuesFinal.pop() - stonesValuesFinal[0]
+    return stonesValuesFinal
   }
 
   return stonesValues.pop()
