@@ -16,17 +16,13 @@ button.addEventListener('click', (event) => {
   const bug = document.querySelector('.bug')
 
   const showResult = () => {
-    if(boostLevelValueBefore < boostLevelValueAfter) {
-      resultContainer.style.display = "block"
-      bug.parentElement.style.display = 'none'
-  
-      resultStones.innerHTML = stones(multiplier(optionValue))
-      resultPrice.innerHTML = `$ ${stones(multiplier(optionValue)) * Number(resultValue.value)}`
-    } else {
-      resultContainer.style.display = "none"
-      bug.parentElement.style.display = 'block'
-      bug.innerHTML = 'O nível atual precisa ser menor do que o nível desejado.'
-    }
+    resultContainer.style.display = "block"
+    bug.parentElement.style.display = 'none'
+    console.log(boostLevelValueBefore)
+    console.log(boostLevelValueAfter)
+
+    resultStones.innerHTML = stones(multiplier(optionValue))
+    resultPrice.innerHTML = `$ ${stones(multiplier(optionValue)) * Number(resultValue.value)}`
   }
 
   showResult()
@@ -42,6 +38,7 @@ function multiplier(multiplo) {
   }
   
   arrayMultiplier = arrayMultiplier.filter(item => item <= boostLevelValueAfter)
+  console.log(arrayMultiplier)
   return arrayMultiplier
 }
 
@@ -62,15 +59,6 @@ function stones(array) {
         return stonesQuantity
       }
     })
-  }
-
-  if(boostLevelValueBefore > 0 ) {
-    let stonesValuesFinal = stonesValues.slice(Number(boostLevelValueBefore - 1), boostLevelValueAfter)
-    stonesValuesFinal = stonesValuesFinal.pop() - stonesValuesFinal[0]
-    return stonesValuesFinal
-  } if(boostLevelValueBefore >= boostLevelValueAfter) {
-    document.querySelector('.bug-container').style.display = 'block'
-    document.querySelector('.bug').innerHTML = 'O nível atual não pode ser maior que o nível futuro.'
   }
 
   return stonesValues.pop()
