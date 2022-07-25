@@ -26,7 +26,7 @@ button.addEventListener('click', (event) => {
       bugContainer.style.display = 'block'
     }
   }
-  
+
   showResult()
 })
 
